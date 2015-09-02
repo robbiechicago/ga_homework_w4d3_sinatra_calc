@@ -1,1 +1,19 @@
 <h1><%= @title %></h1>
+
+<form action="mortgage" method="post">
+  <label for="loan">loan amount</label> 
+  <input type="text" name="loan">
+
+  <label for="apr">APR%</label>
+  <input type="text" name="apr">
+
+  <label for="term">Term</label>
+  <input type="text" name="term">
+
+  <button>mortgage me</button>
+
+</form>
+
+<% if @result %>
+  <p>result is <%= @result %></p>
+<% end %>

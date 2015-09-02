@@ -7,15 +7,22 @@ post '/calculate' do
   @num2 = params[:num2].to_i
   # binding.pry
   case params[:op]
-  when 'plus' then @result = @num1 + @num2
-  when 'minus' then @result = @num1 - @num2
-  when 'divide' then @result = @num1 / @num2
-  when 'multiply' then @result = @num1 * @num2
+    when 'plus' then @result = @num1 + @num2
+    when 'minus' then @result = @num1 - @num2
+    when 'divide' then @result = @num1 / @num2
+    when 'multiply' then @result = @num1 * @num2
   end
   erb :basic
 end
 
-
+post '/mortgage' do
+  @loan = params[:loan].to_i
+  @apr = params[:apr].to_f
+  @term = params[:term].to_i
+  @uglybit = (1+@apr)**@term
+  @result = @loan*((@apr*@uglybit)/@uglybit-1)
+  erb :mortgage
+end
 
 get '/' do
   @title = 'Basic'
