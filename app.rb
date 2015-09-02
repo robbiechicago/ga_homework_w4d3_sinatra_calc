@@ -24,6 +24,19 @@ post '/mortgage' do
   erb :mortgage
 end
 
+post '/bmi' do
+  @mass = params[:mass].to_f
+  @height = params[:height].to_f
+  @unit = params[:units]
+  if @unit = 'kg'
+    @result = @mass/(@height*@height)
+  else
+    @result = (@mass/(@height*@height))*703;
+  end
+  erb :bmi
+end
+
+
 get '/' do
   @title = 'Basic'
   erb :basic
