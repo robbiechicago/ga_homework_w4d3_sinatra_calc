@@ -1,1 +1,23 @@
 <h1><%= @title %></h1>
+
+<form action="distance" method="post">
+
+  <label for="distance">distance (miles)</label> 
+  <input type="text" name="distance">
+
+  <label for="mpg">MPG</label>
+  <input type="text" name="mpg">
+
+  <label for="cost">fuel cost ($/gallon)</label>
+  <input type="text" name="cost">
+
+  <label for="speed">Speed (MPH)</label>
+  <input type="text" name="speed">
+
+  <button>calculato!</button>
+
+</form>
+
+<% if @result %>
+  <p>your trip will take <%= @time_result %> hours and cost $<%= @cost_result %></p>
+<% end %>

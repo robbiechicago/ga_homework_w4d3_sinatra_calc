@@ -36,6 +36,23 @@ post '/bmi' do
   erb :bmi
 end
 
+post '/distance' do
+  @distance = params[:distance].to_i
+  @speed = params[:speed].to_i
+  @cost = params[:cost].to_f
+  @mpg = params[:mpg].to_f
+
+  @time_result = @distance/@speed
+
+  if @speed > 60
+    @speedDiff = @speed - 60
+    @mpg = @mpg - (2*@speedDiff)
+  end
+
+  @gallonsUsed = @distance/@mpg
+  @cost_result = @gallonsUsed*@cost
+  erb :distance
+end
 
 get '/' do
   @title = 'Basic'
